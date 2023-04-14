@@ -1,0 +1,39 @@
+.container {
+    border: 1px solid rgb(255, 255, 255);
+    background: #b60d5d;
+    background: linear-gradient(313deg,#b60d5d 0%, #680747 80%);
+    background: -webkit-linear-gradient(313deg,#b60d5d 0%, #680747 80%);
+    background: -moz-linear-gradient(313deg,#b60d5d 0%, #680747 80%);
+    width: 300px;
+    border-radius: 10px;
+    padding: 3em;
+    box-shadow: 12px 10px 5px 0px rgba(59, 58, 58, 0.75);
+    text-shadow: 10px 4px 9px rgba(0,0,0,0.6);
+    display:flex;
+    flex-direction: column;
+    transition: all 400ms ease;
+
+}
+.container:hover{
+    box-shadow: 20px 20px 10px 0px rgba(41, 40, 40, 0.75);
+    transform: translateY(-3%)
+    
+}
+
+.closeButton {
+    border: 1px;
+    background-color: rgb(230, 86, 86);
+    border-radius: 6px;
+    width: fit-content;
+    height: fit-content;
+    box-shadow: 7px 5px 5px 0px rgba(39, 37, 37, 0.75);
+    color: white;
+    display:end;
+    justify-content:end;
+    
+}
+
+
+.subrayado{
+    text-decoration: none ;
+}
