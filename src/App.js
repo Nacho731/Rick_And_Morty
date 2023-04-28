@@ -7,9 +7,10 @@ import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import About from "./components/About/About";
 import Detail from "./components/Detail/Detail";
 import Form from "./components/Form/Form";
+import Favorites from "./components/Favorites/Favorites";
 
-const API_KEY = "9f6f86a9dd23.a3f53317ae5fc80268a5"
-const URL_BASE = "https://be-a-rym.up.railway.app/api/character"
+//const API_KEY = "9f6f86a9dd23.a3f53317ae5fc80268a5"
+//const URL_BASE = "https://be-a-rym.up.railway.app/api/character"
 const email = "nacho@gmail.com"
 const password = "explosion"
 
@@ -20,11 +21,15 @@ const location = useLocation();
 const navigate = useNavigate();
 const [characters, setCharacters] = useState([]);
 
-const login = (userData) =>{
-   if(userData.email === email && userData.password === password){
-      setAccess(true)
-      navigate("/home")
-   }
+const login = (userData) => {
+   const { email, password } = userData;
+   const URL = 'http://localhost:3001/rickandmorty/login/';
+   axios(URL + `?email=${email}&password=${password}`)
+   .then(({ data }) => {
+      const { access } = data;
+      setAccess(access);
+      access && navigate('/home');
+   });
 }
 
 useEffect(()=>{
@@ -32,7 +37,7 @@ useEffect(()=>{
 }, [access])
 
 const onSearch = (id) => {
-   axios(`${URL_BASE}/${id}?key=${API_KEY}`)
+   axios(`http://localhost:3001/rickandmorty/character/${id}`)
    .then(({ data }) => {
       if (data.name) {
          setCharacters((oldChars) => [...oldChars, data]);
@@ -68,7 +73,7 @@ const onClose = (id) => {
             <Route path= "/home" element={<Cards characters={characters} onClose={onClose} />}/>
             <Route path="/about" element={<About/>}/>
             <Route path="detail/:id" element={<Detail/>}/>
-            
+            <Route path="/favorites" element={<Favorites/>}/>
 
          </Routes>
          

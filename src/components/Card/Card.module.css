@@ -1,4 +1,4 @@
-.container {
+ .container {
     border: 1px solid rgb(255, 255, 255);
     background: #b60d5d;
     background: linear-gradient(313deg,#b60d5d 0%, #680747 80%);
@@ -36,4 +36,5 @@
 
 .subrayado{
     text-decoration: none ;
-}
+} 
+
